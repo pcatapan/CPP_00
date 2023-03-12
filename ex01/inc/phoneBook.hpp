@@ -6,7 +6,7 @@
 /*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:48:44 by pcatapan          #+#    #+#             */
-/*   Updated: 2023/03/05 20:17:54 by pcatapan         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:02:23 by pcatapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ class PhoneBook{
 		std::string GetCommand();
 		void		DelOldContact(int oldContact);
 		void		AddContact();
-		//void		SearchContact();
-		//void		Exit();
+		void		SearchContact();
+		void		Exit();
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 17:53:02 by pcatapan          #+#    #+#             */
-/*   Updated: 2023/03/05 20:10:17 by pcatapan         ###   ########.fr       */
+/*   Updated: 2023/03/12 18:48:44 by pcatapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,17 @@ int	main(int argc, char **argv){
 		
 		command = PhoneBook.GetCommand();
 		
-		if (command == "ADD"){
+		if (command == "ADD" || command == "add"){
 			PhoneBook.AddContact();
 		}
-		else if (command == "SEARCH"){
-			;//PhoneBook.SearchContact();
+		else if (command == "SEARCH" || command == "search"){
+			PhoneBook.SearchContact();
 		}
-		else if (command == "EXIT"){
-			;//PhoneBook.Exit();
+		else if (command == "EXIT" || command == "exit"){
+			PhoneBook.Exit();
+		}
+		else if (command == "HELP" || command == "help"){
+			PhoneBook.StartPhoneBook();
 		}
 		else{
 			 std::cout << std::endl << "No Bro, this is not a my command!" << std::endl;

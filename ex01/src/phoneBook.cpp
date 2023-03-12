@@ -6,7 +6,7 @@
 /*   By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:50:06 by pcatapan          #+#    #+#             */
-/*   Updated: 2023/03/05 20:32:53 by pcatapan         ###   ########.fr       */
+/*   Updated: 2023/03/12 19:25:51 by pcatapan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void    PhoneBook::StartPhoneBook(){
     std::cout << "Hey! You can use me :"  << std::endl <<
         "- ADD [For added new contact]"  << std::endl <<
         "- SEARCH [For searched the contact]"  << std::endl <<
-        "- EXIT [For close the PhoneBook]" << std::endl << std::endl;
+        "- EXIT [For close the PhoneBook]" << std::endl <<
+        "- HELP [For see the command]" << std::endl << std::endl;;
 }
 
 std::string	PhoneBook::GetCommand(){
@@ -37,7 +38,7 @@ void    PhoneBook::DelOldContact(int oldContact){
 
     std::cout << "You have 8 contact, if you add a new contact delete the your oldest contact, "
             "this is your oldest contact :" << std::endl;
-    contacts[oldContact].PrintInfoContact();
+    contacts[oldContact].PrintInfoContact(oldContact);
 
     std::cout << "Are you sure to delete the contact? Y or N" << std::endl;
     std::cin >> options;
@@ -58,4 +59,40 @@ void    PhoneBook::AddContact(){
     else {
        DelOldContact(oldContact);
     }
+}
+
+void    PhoneBook::SearchContact(){
+    std::string searchWord;
+    std::string retry;
+    int         i;
+    
+    i = 0;
+    if (numberContact == 0) {
+        std::cout << "You dont'have contact, please add before serach contact" << std::endl;
+        return ;
+    }
+    std::cout << "Insert the name, lastname or nickname of the contact to search" << std::endl;
+    std::cin >> searchWord;
+
+    while (i < numberContact) {
+        if (contacts[i].SearchChecker(searchWord)) {
+            contacts[i].PrintInfoContact(i);
+            break;
+        }
+        i++;
+        if (i == 8) {
+            std::cout << "Sorry bro, not found a contact with word : " << searchWord << std::endl;
+	        std::cout << "Retry? (Y or N)" << std::endl;
+            std::cin >> retry;
+            if (retry == "Y") {
+                std::cout << "Insert the name, lastname or nickname of the contact to search" << std::endl;
+                std::cin >> searchWord;
+                i = 0;
+            }
+        }
+    }
+}
+
+void    PhoneBook::Exit() {
+    exit(1);
 }
