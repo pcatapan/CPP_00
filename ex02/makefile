@@ -6,11 +6,11 @@
 #    By: pcatapan <pcatapan@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/05 17:15:44 by pcatapan          #+#    #+#              #
-#    Updated: 2023/03/05 18:52:15 by pcatapan         ###   ########.fr        #
+#    Updated: 2023/03/12 19:49:10 by pcatapan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phoneBook
+NAME = account
 
 SRC = src/*.cpp
 
