@@ -37,17 +37,10 @@ void    Contact::PrintInfoContact(int i){
 		std::cout << nickname << std::setw(10 - nickname.length()) <<  std::endl;
 }
 
-int	Contact::SearchChecker(std::string searchWord){
-	std::size_t found;
-
-	found = name.find(searchWord);
-	if (found!=std::string::npos)
-		return 1;
-	found = surname.find(searchWord);
-	if (found!=std::string::npos)
-		return 1;
-	found = nickname.find(searchWord);
-	if (found!=std::string::npos)
-		return 1;
-	return 0;
+void	Contact::PrintAllInfo(){
+	std::cout << "Name : " << name << std::endl;
+	std::cout << "Surname : " << surname << std::endl;
+	std::cout << "Nickname : " << nickname << std::endl;
+	std::cout << "Phone number : " << phoneNumber << std::endl;
+	std::cout << "Dark secret : " << darkestSecret << std::endl;
 }

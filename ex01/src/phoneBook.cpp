@@ -5,6 +5,7 @@ void    PhoneBook::StartPhoneBook(){
     numberContact = 0;
     oldContact = 0;
 
+    system("clear");
     std::cout << "Hey! You can use me :"  << std::endl <<
         "- ADD [For added new contact]"  << std::endl <<
         "- SEARCH [For searched the contact]"  << std::endl <<
@@ -15,7 +16,7 @@ void    PhoneBook::StartPhoneBook(){
 std::string	PhoneBook::GetCommand(){
     std::string command;
 
-    std::cout << "What can I do for you?" << std::endl;
+    std::cout << std::endl << "What can I do for you?" << std::endl;
     std::cin >> command;
     
     return command;
@@ -41,6 +42,7 @@ void    PhoneBook::DelOldContact(int oldContact){
 
 void    PhoneBook::AddContact(){
 
+    system("clear");
     if (numberContact < 8){
         contacts[numberContact++].CreateContact();
     }
@@ -53,31 +55,26 @@ void    PhoneBook::SearchContact(){
     std::string searchWord;
     std::string retry;
     int         i;
+    int         index;
     
     i = 0;
+    system("clear");
     if (numberContact == 0) {
         std::cout << "You dont'have contact, please add before serach contact" << std::endl;
         return ;
     }
-    std::cout << "Insert the name, lastname or nickname of the contact to search" << std::endl;
-    std::cin >> searchWord;
 
     while (i < numberContact) {
-        if (contacts[i].SearchChecker(searchWord)) {
-            contacts[i].PrintInfoContact(i);
-            break;
-        }
+        contacts[i].PrintInfoContact(i);
         i++;
-        if (i == 8) {
-            std::cout << "Sorry bro, not found a contact with word : " << searchWord << std::endl;
-	        std::cout << "Retry? (Y or N)" << std::endl;
-            std::cin >> retry;
-            if (retry == "Y") {
-                std::cout << "Insert the name, lastname or nickname of the contact to search" << std::endl;
-                std::cin >> searchWord;
-                i = 0;
-            }
-        }
+    }
+    std::cout << "Insert the index of the contact to search" << std::endl;
+    std::cin >> index;
+
+    if (index < numberContact && index >= 0) {
+        contacts[index].PrintAllInfo();
+    } else {
+         std::cout << "This index is incorrect!" << std::endl;
     }
 }
 
